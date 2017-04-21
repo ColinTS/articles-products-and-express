@@ -17,6 +17,13 @@ module.exports = (function(){
     };
   }
 
+  //success messages to be served by templates
+  function success(){
+    return {
+      deleteSuccess: 'Great, you deleted an item!'
+    };
+  }
+
   function checkID(id){
     for(let i = 0; i < catalog.length; i++){
       if(catalog[i].id === parseInt(id)){
@@ -78,7 +85,8 @@ module.exports = (function(){
     getProducts: getProducts,
     idProduct: idProduct,
     error: error,
-    checkID: checkID
+    checkID: checkID,
+    success: success
   };
 
 })();

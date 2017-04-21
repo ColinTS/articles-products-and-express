@@ -42,7 +42,7 @@ router.route('/:id')
   .delete((req, res) => {
   if(products.checkID(req.params.id)){
     products.deleteProduct(req.params.id);
-    res.redirect('/products');
+    res.render('index', products.success());
   } else {
     res.redirect('/products');
   }
