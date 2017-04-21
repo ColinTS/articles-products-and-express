@@ -2,10 +2,29 @@
 module.exports = (function(){
 
   //stores all of the products
-  catalog = [];
+  let catalog = [];
 
-  //sets the id value of each product
+  //stores a single product
+  let product;
+
+  //sets the id value for each product
   let id = 0;
+
+  //gets all of the products
+  function getProducts(){
+    return catalog;
+  }
+
+  //gets a single product by ID
+  function idProduct(id){
+    for(let i = 0; i < catalog.length; i++){
+      if(catalog[i].id === parseInt(id)){
+        product = catalog[i];
+      }
+    }
+    console.log(product);
+    return product;
+  }
 
   //creates a product
   function createProduct(body){
@@ -29,11 +48,24 @@ module.exports = (function(){
     return catalog;
   }
 
+  //deletes a product
+  function deleteProduct(query){
+    for(let i = 0; i < catalog.length; i++){
+      if(catalog[i].id === parseInt(query)){
+        catalog = catalog.splice(catalog[i], 1);
+      }
+    }
+    console.log(catalog);
+    return catalog;
+  }
 
 
   return {
     createProduct: createProduct,
-    editProduct: editProduct
+    editProduct: editProduct,
+    deleteProduct: deleteProduct,
+    getProducts: getProducts,
+    idProduct: idProduct
   };
 
 })();
