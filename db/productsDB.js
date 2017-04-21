@@ -64,14 +64,10 @@ module.exports = (function(){
   }
 
   //deletes a product
-  function deleteProduct(query){
-    for(let i = 0; i < catalog.length; i++){
-      if(catalog[i].id === parseInt(query)){
-        catalog = catalog.splice(catalog[i], 1);
-      }
-    }
-    console.log(catalog);
-    return catalog;
+  function deleteProduct(id){
+    let deleted = catalog.splice(catalog.indexOf(parseInt(id)), 1);
+    console.log('deleted', deleted);
+    return deleted;
   }
 
 

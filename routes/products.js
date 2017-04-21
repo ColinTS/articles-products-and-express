@@ -40,13 +40,13 @@ router.route('/:id')
     }
   })
   .delete((req, res) => {
-    if(products.checkID(req.params.id)){
-      products.deleteProduct(req.params.id);
-      res.redirect('/products');
-    } else {
-      res.redirect('/products');
-    }
-  });
+  if(products.checkID(req.params.id)){
+    products.deleteProduct(req.params.id);
+    res.redirect('/products');
+  } else {
+    res.redirect('/products');
+  }
+});
 
 //form for editing a product
 router.route('/:id/edit')
@@ -54,6 +54,7 @@ router.route('/:id/edit')
     products.idProduct(req.params.id);
     res.render('edit', products.idProduct());
   });
+
 
 
 module.exports = router;
