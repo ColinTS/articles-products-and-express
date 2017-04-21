@@ -10,6 +10,8 @@ const app = express();
 //parse application
 app.use(bodyParser.urlencoded({extended: true}));
 
+app.use(methodOverride('_method'));
+
 //attach products router to express
 app.use('/products', products);
 

@@ -8,7 +8,6 @@ var methodOverride = require('method-override');
 //products
 router.route('/')
   .get((req, res) => {
-
     res.render('index', {catalog: products.getProducts()});
   })
   .post((req, res) => {
@@ -41,8 +40,12 @@ router.route('/:id')
     }
   })
   .delete((req, res) => {
-    products.deleteProduct(req.params.id);
-    res.redirect('/products');
+    if(products.checkID(req.params.id)){
+      products.deleteProduct(req.params.id);
+      res.redirect('/products');
+    } else {
+      res.redirect('/products');
+    }
   });
 
 //form for editing a product
