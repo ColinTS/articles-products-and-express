@@ -10,6 +10,21 @@ module.exports = (function(){
   //sets the id value for each product
   let id = 0;
 
+  //error messages to be served by templates
+  function error(){
+    return {
+      newProductError: 'Oops, a new product could not be created. Try again'
+    };
+  }
+
+  function checkID(id){
+    for(let i = 0; i < catalog.length; i++){
+      if(catalog[i].id === parseInt(id)){
+        return true;
+      }
+    }
+  }
+
   //gets all of the products
   function getProducts(){
     return catalog;
@@ -38,9 +53,9 @@ module.exports = (function(){
   }
 
   //edits a product
-  function editProduct(body){
+  function editProduct(body, id){
     for(let i = 0; i < catalog.length; i++){
-      if(catalog[i].id === parseInt(body.id)){
+      if(catalog[i].id === parseInt(id)){
         catalog[i].name = body.name;
       }
     }
@@ -65,7 +80,9 @@ module.exports = (function(){
     editProduct: editProduct,
     deleteProduct: deleteProduct,
     getProducts: getProducts,
-    idProduct: idProduct
+    idProduct: idProduct,
+    error: error,
+    checkID: checkID
   };
 
 })();

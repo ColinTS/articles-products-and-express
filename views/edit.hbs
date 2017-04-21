@@ -1,6 +1,6 @@
 <h1>Edit the Product's Information</h1>
 
-  <form method="PUT" action="/resource" enctype="application/x-www-form-urlencoded">
+  <form method="POST" action="/resource?_method=PUT" enctype="application/x-www-form-urlencoded">
     <input type="text" name= "productName" value= {{name}}>
     <input type="text" name= "productPrice" value= {{price}}>
     <input type="text" name= "productInventory" value= {{inventory}}>

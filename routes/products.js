@@ -12,11 +12,11 @@ router.route('/')
     res.render('index', {catalog: products.getProducts()});
   })
   .post((req, res) => {
-    if(req.body.hasOwnProperty('name')){
+    if(req.body.hasOwnProperty('name') && req.body.hasOwnProperty('price') && req.body.hasOwnProperty('inventory')){
       products.createProduct(req.body);
       res.redirect('/products');
     } else {
-      res.render('/products/new');
+      res.render('new', products.error());
     }
   });
 
@@ -33,12 +33,16 @@ router.route('/:id')
     res.render('product', products.idProduct());
   })
   .put((req, res) => {
-    products.editProduct(req.body);
-    res.send('Product edited!');
+    if(products.checkID(req.params.id)){
+      products.editProduct(req.body, req.params.id);
+      res.redirect(303, `/products/${parseInt(req.params.id)}`);
+    } else {
+      res.redirect(303, `/products/${parseInt(req.params.id)}/edit`);
+    }
   })
   .delete((req, res) => {
     products.deleteProduct(req.params.id);
-    res.send('Product deleted!');
+    res.redirect('/products');
   });
 
 //form for editing a product
