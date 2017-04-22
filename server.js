@@ -1,6 +1,6 @@
  /*jshint esversion: 6*/
 const products = require('./routes/products.js');
-// const articles = require('db/articles.js');
+const articles = require('./routes/articles.js');
 const express = require('express');
 var methodOverride = require('method-override');
 const handlebars = require('express-handlebars');
@@ -10,10 +10,14 @@ const app = express();
 //parse application
 app.use(bodyParser.urlencoded({extended: true}));
 
+//method override
 app.use(methodOverride('_method'));
 
 //attach products router to express
 app.use('/products', products);
+
+//attach articles router to express
+app.use('/articles', articles);
 
 //handlebars setup
 const hbs = handlebars.create({

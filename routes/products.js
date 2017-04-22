@@ -15,7 +15,7 @@ router.route('/')
       products.createProduct(req.body);
       res.redirect('/products');
     } else {
-      res.render('new', products.error());
+      res.render('new', products.error('newProductError'));
     }
   });
 
@@ -32,11 +32,11 @@ router.route('/:id')
     res.render('product', products.idProduct());
   })
   .put((req, res) => {
-    if(products.checkID(req.params.id)){
+    if(products.checkID(req.params.id) && req.body.name && req.body.price && req.body.inventory){
       products.editProduct(req.body, req.params.id);
       res.redirect(303, `/products/${parseInt(req.params.id)}`);
     } else {
-      res.redirect(303, `/products/${parseInt(req.params.id)}/edit`);
+      res.render('edit', products.error('editProductError'));
     }
   })
   .delete((req, res) => {

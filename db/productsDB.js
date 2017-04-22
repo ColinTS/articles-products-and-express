@@ -11,10 +11,13 @@ module.exports = (function(){
   let id = 0;
 
   //error messages to be served by templates
-  function error(){
-    return {
-      newProductError: 'Oops, a new product could not be created. Try again'
+  function error(keyy){
+    let obj = {
+      'newProductError': 'Oops, a new product could not be created. Try again',
+      'editProductError': 'Oops, that product cannot be edited'
     };
+    console.log(obj[keyy]);
+    return {error: obj[keyy]};
   }
 
   //success messages to be served by templates
