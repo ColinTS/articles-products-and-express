@@ -8,7 +8,6 @@ var methodOverride = require('method-override');
 //articles
 router.route('/')
   .get((req, res) => {
-    console.log(articles.getArticles());
     res.render('articles/index', {catalog: articles.getArticles()});
   })
   .post((req, res) => {

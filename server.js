@@ -1,11 +1,11 @@
  /*jshint esversion: 6*/
-const products = require('./routes/products.js');
-const articles = require('./routes/articles.js');
 const express = require('express');
-var methodOverride = require('method-override');
 const handlebars = require('express-handlebars');
 const bodyParser = require('body-parser');
 const app = express();
+const products = require('./routes/products.js');
+const articles = require('./routes/articles.js');
+var methodOverride = require('method-override');
 
 //parse application
 app.use(bodyParser.urlencoded({extended: true}));
