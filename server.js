@@ -29,10 +29,4 @@ app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
 
 
-
-
-
-
-const server = app.listen(3000, () => {
-  console.log('server listening on port 3000');
-});
+module.exports = app;

@@ -13,7 +13,6 @@ module.exports = (function(){
       'newArticleError': 'Oops, a new article could not be created. Try again',
       'editArticleError': 'Oops, that article cannot be edited'
     };
-    console.log(obj[key]);
     return {error: obj[key]};
   }
 
